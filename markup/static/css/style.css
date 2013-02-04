@@ -643,6 +643,12 @@ a:visited {
     font-weight: bold;
     font-size: 36px;
 }
+.object-left-column {
+    width: 240px;
+}
+.object-center-column {
+    width: 400px;
+}
 .calc-caption-image {
     width: 250px;
     margin-left: -10px;
@@ -650,6 +656,10 @@ a:visited {
 .caption {
     margin-top: 50px;
 }
+.object-advantages .main-right-column-inner {
+    margin: 20px 0 44px 21px;
+}
+
 .calc-caption {
     margin-top: 18px;
 }
