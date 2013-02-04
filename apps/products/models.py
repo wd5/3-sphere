@@ -174,6 +174,7 @@ class Tech(models.Model):
     )
     description = models.TextField(
         verbose_name = u'описание для главной',
+        blank = True,
     )
     alias = models.CharField(
         verbose_name = u'Алиас', 
@@ -182,7 +183,8 @@ class Tech(models.Model):
     )
     image = ImageField(
         verbose_name = u'Картинка', 
-        upload_to = file_path_property
+        upload_to = file_path_property,
+        blank = True,
     )
     order = models.IntegerField(
         verbose_name = u'Порядок сортировки',

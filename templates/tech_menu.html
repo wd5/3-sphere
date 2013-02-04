@@ -1,0 +1,5 @@
+<ul>
+{% for m_item in list %}
+<li{% if item == m_item %} class="curr" {% endif %}><a href="#{{ m_item.alias }}">{{ m_item.name }}</a></li>
+{% endfor %}
+</ul>

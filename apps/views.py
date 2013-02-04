@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.views.generic import TemplateView, DetailView
-from apps.products.models import Product, Property
+from django.views.generic import TemplateView, DetailView, ListView
+from apps.products.models import Product, Property, Tech
 
 
 class IndexView(TemplateView):
@@ -24,3 +24,15 @@ class ProductView(DetailView):
 		context['properties'] = Property.objects.published().filter(on_product_page=True)
 		return context
 product = ProductView.as_view()
+
+class TechView(ListView):
+	model = Tech
+	template_name = 'technology.html'
+	queryset = model.objects.published()
+	context_object_name = 'list'
+
+	def get_context_data(self, **kwargs):
+		context = super(TechView,self).get_context_data(**kwargs)
+
+		return context
+technology = TechView.as_view()
