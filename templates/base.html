@@ -33,11 +33,7 @@
             </figure>
             <figure class="header-main-nav-box">
                 <div class="header-main-nav-caption">Арочные конструкции</div>
-                <ul class="header-nav">
-                    {% for item in products %}
-                    <li><a href="/{{ item.alias }}">{{ item.name }}</a></li>
-                    {% endfor %}
-                </ul>
+                {% block_menu request.path %}
             </figure>
             <figure class="header-contacts-box">
                 <div class="header-phone"><span class="phone-code">(3022)</span> 71-77-71</div><div class="clear"></div>
@@ -57,7 +53,7 @@
     <footer class="footer">
         <div class="footer-inner">
             <p class="copyright">
-                © 2011-2012
+                © 2011-2013
                 Сфера+
             </p>
 
@@ -67,12 +63,12 @@
             </p>
 
             <p class="calculate-button">
-                <a href="" >Рассчитать стоимость</a>
+                <a href="/calculation/" >Рассчитать стоимость</a>
             </p>
 
             <p class="octoberweb">
                 Разработка сайта
-                <a href="">OctoberWeb</a>
+                <a href="http://octoberweb.ru">OctoberWeb</a>
             </p>
         </div>
     </footer>

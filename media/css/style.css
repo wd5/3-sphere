@@ -71,7 +71,7 @@ a:visited {
 .header {
     height: 93px;
     margin: 0 auto;
-    background: url(../images/header-center-bg.png) no-repeat;
+    background:url(../images/header-center-bg.png) no-repeat;
     font-weight: bold;
     font-size: 18px;
 }
@@ -745,8 +745,34 @@ a:visited {
     margin-top: 54px;
     font-size: 24px;
 }
+.form {
+    margin-left: 240px;
+    width: 520px;
+}
+.message {
+    color: #413204;
+    font-size: 16px;
+    background: #f7eed1;
+    margin-right: -15px;
+    padding-right: 15px;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-top: 12px;
+    padding-bottom: 5px;
+}
+.message p {
+    margin-bottom: 15px;
+}
+.message .bold {
+    font-weight: bold;
+    color: #413204;
+}
 .calc-form-header {
     position: relative;
+    display: inline-block;
+    font-size: 24px;
+    margin-top: 54px;
+    margin-bottom: 36px;
 } 
 .calc-form-header:after {
     content: '';
@@ -755,10 +781,64 @@ a:visited {
     width: 22px;
     height: 18px;
     top: 5px;
-    right: -20px;
+    right: -30px;
+}
+.calc-form-size {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+.calc-form span,
+.calc-form-input {
+    margin-right: 20px;
 } 
+.calc-form-input {
+    width: 72px;
+    height: 25px;
+    border: 1px #a8a8a8 solid;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-size: 24px;
+    text-align: right;
+}
+.calc-form-size .value,
+.m-value {
+    font-weight: bold;
+    font-size: 24px;
+}
+.total {
+    padding-top: 74px;
+    padding-bottom: 74px;
+    position: relative;
+}
+.total .value {
+    font-size: 40px;
+}
+.total .rub {
+    font-size: 36px;
+    font-style: italic;
+}
+.calc-form-size .label,
+.total .label {
+    display: block;
+    position: absolute;
+    top: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #9d9d9d;
+}
+.total .label {
+    top: 105px;
+    letter-spacing: 1px;
+}
 .calc-size-chooser .size-chooser-img {
     margin-left: 0;
+}
+.calc-button {
+    display: inline-block;
+    width: 174px;
+    height: 33px;
+    background: url(../images/send-button.png);
 }
 /* end of main*/
 

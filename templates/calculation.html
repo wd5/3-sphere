@@ -1,9 +1,91 @@
 {% extends 'base.html' %}
 {% block center %}
-{{ price }} - это цена за кв.м
-{{ price_warm }} - это цена за кв. м с утеплителем
-
-<p>Нужно сделать галку "С утеплителем" и в зависимости от нее брать первую цену или вторую.<br>По факту у нас длина, которую вписывает пользователдь, умножается на ширину, высота не играет значения</p>
-<p>Вот эта ссылка на самом деле должна быть кнопкой, в которой в фансибокс загружается форма</p>
-<a href="/request/">Отправить заявку</a>
+	<!-- main -->
+    <section class="main">
+        <div class="caption">
+            <img class="calc-caption-image" src="/media/images/calc-caption-image.png" alt="" class="calc-header-img">
+            <div class="calc-caption">
+                <h3>Расчет стоимости</h3>
+                <ul class="calc-nav">
+                    <li class="current">Ангар</li>
+                    <li><a href="">Мансарда</a></li>
+                    <li><a href="">Кровля</a></li>
+                    <li><a href="">Пристройка</a></li>
+                </ul>
+                <h4>1. Укажите ширину и высоту ангара</h3>
+            </div>
+        </div>
+       <div class="size-chooser calc-size-chooser">
+                    <img class="size-chooser-img" src="/media/images/fake-size-chooser.png" alt="">
+                    <ul class="size-chooser-list height-chooser">
+                        <li><a href="">12 m</a></li>
+                        <li><a href="">11.5 m</a></li>
+                        <li><a href="">11 m</a></li>
+                        <li><a href="">10.5 m</a></li>
+                        <li><a href="">10 m</a></li>
+                        <li><a href="">9.5 m</a></li>
+                        <li><a href="">9 m</a></li>
+                        <li><a href="">8.5 m</a></li>
+                        <li><a href="">8 m</a></li>
+                        <li class="current">7.5 m</li>
+                        <li><a href="">7 m</a></li>
+                        <li><a href="">6.5 m</a></li>
+                        <li><a href="">6 m</a></li>
+                        <li><a href="">5.5 m</a></li>
+                        <li><a href="">5 m</a></li>
+                        <li><a href="">4.5 m</a></li>
+                        <li><a href="">4 m</a></li>
+                        <li><a href="">3.5 m</a></li>
+                        <li><a href="">3 m</a></li>
+                    </ul>
+                    <ul class="size-chooser-list width-chooser">
+                        <li><span class="label">ШИРИНА</span><span class="value">6 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">7 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">8 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">9 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">10 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">11 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">12 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">13 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">14 m</span></li>
+                        <li class="current"><span class="label">ШИРИНА</span><span class="value">15 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">16 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">17 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">18 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">19 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">20 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">21 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">22 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">23 m</span></li>
+                        <li><span class="label">ШИРИНА</span><span class="value">24 m</span></li>
+                    </ul>
+                </div>
+        <div class="form">
+            <figure class="message">
+                <p>При необходимости мы можем сделать ангар ниже и шире, но при этом процессе уменьшается сопротивление снежным нагрузкам.</p>
+                <p><span class="bold">За индивидуальным расчетам обращайтесь по телефону 71-77-71</span></p>
+            </figure>
+            <form action="" class="calc-form">
+                <div><h3 class="calc-form-header">2. Введите длину ангара</h3></div>
+                <div class="calc-form-size">
+                    <span class="value">15 м</span> 
+                    <span class="label">ШИРИНА</span>
+                </div>
+                <span class="multi">x</span>
+                <div class="calc-form-size">
+                    <span class="value">7.5 м</span> 
+                    <span class="label">ВЫСОТА</span>
+                </div>
+                <span class="multi">x</span>
+                <input type="text" class="calc-form-input" placeholder="25"> <span class="m-value">м</span>
+                <div class="total">
+                    <span class="value">3 500 000</span>
+                    <span class="rub">руб.</span>
+                    <span class="label">ОРИЕНТИРОВОЧНАЯ СТОИМОСТЬ</span>
+                    <a href="" class="calc-button">Отправить заявку</a>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- end of main -->	
 {% endblock %}
