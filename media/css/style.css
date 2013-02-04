@@ -82,7 +82,7 @@ a:visited {
     width: 552px;
     height: 93px;
     margin-left: -552px;
-    background: url(../images/header-left-bg.png);
+    background: url(../images/header-left-bg.png) repeat-x;
 
 }
 .header:after {
@@ -93,7 +93,7 @@ a:visited {
     width: 480px;
     height: 93px;
     margin-left: 960px;
-    background: url(../images/header-right-bg.png);
+    background: url(../images/header-right-bg.png) repeat-x;
 }
 .header-inner {
     position: relative;
@@ -276,7 +276,8 @@ a:visited {
 }
 .main-right-column-inner {
     width: 155px;
-    position: relative;    
+    position: relative;
+    background: #ffffff;    
     border: solid #f0e799 3px;
     border-radius: 13px;
     padding: 0 10px 30px 36px;
@@ -627,12 +628,85 @@ a:visited {
     margin-left: 80px;
     margin-right: -80px;
 }
+.object-main {
+    margin-top: 60px;
+}
+.breadcrumbs {
+    color: #a4a4a4;
+    font-style: italic;
+    font-size: 16px; 
+}
+.object-caption .object-left-column {
+    text-align: right;
+}
+.object-caption h3 {
+    margin-top: 18px;
+    font-weight: bold;
+    font-size: 36px;
+}
+.object-left-column {
+    width: 240px;
+}
+.object-center-column {
+    width: 400px;
+}
+.object-right-column {
+    width: 820px;
+    margin-right: -440px;
+}
 .calc-caption-image {
     width: 250px;
     margin-left: -10px;
 }
 .caption {
     margin-top: 50px;
+}
+.object-main-advantages {
+    margin-top: 35px;
+}
+.object-advantages {
+    width: 200px;
+}
+.object-advantages .main-right-column-inner {
+    margin: 0 0 44px 121px;
+}
+.object-text {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 10px;
+}
+.object-text p {
+    margin-bottom: 18px;
+    padding-right: 15px;
+}
+.object-text .focused-p {
+    background: #f7eed1;
+    color: #413304;
+    margin-top: -12px;
+    padding-top: 12px;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+.object-usecases {
+    padding-bottom: 34px;
+}
+.usecases-category {
+    margin-bottom: 20px;
+}
+.usecases-category .object-right-column img {
+    margin-right: -2px;
+    margin-bottom: -2px;
+}
+.usecases-category .object-left-column {
+    text-align: right;
+    padding-right: 40px;
+    width: 200px;
+}
+.usecases-category .object-left-column p {
+    font-weight: bold;
+    font-size: 14px;
 }
 .calc-caption {
     margin-top: 18px;

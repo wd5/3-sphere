@@ -276,7 +276,8 @@ a:visited {
 }
 .main-right-column-inner {
     width: 155px;
-    position: relative;    
+    position: relative;
+    background: #ffffff;    
     border: solid #f0e799 3px;
     border-radius: 13px;
     padding: 0 10px 30px 36px;
@@ -649,6 +650,10 @@ a:visited {
 .object-center-column {
     width: 400px;
 }
+.object-right-column {
+    width: 820px;
+    margin-right: -440px;
+}
 .calc-caption-image {
     width: 250px;
     margin-left: -10px;
@@ -656,10 +661,53 @@ a:visited {
 .caption {
     margin-top: 50px;
 }
-.object-advantages .main-right-column-inner {
-    margin: 20px 0 44px 21px;
+.object-main-advantages {
+    margin-top: 35px;
 }
-
+.object-advantages {
+    width: 200px;
+}
+.object-advantages .main-right-column-inner {
+    margin: 0 0 44px 121px;
+}
+.object-text {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 10px;
+}
+.object-text p {
+    margin-bottom: 18px;
+    padding-right: 15px;
+}
+.object-text .focused-p {
+    background: #f7eed1;
+    color: #413304;
+    margin-top: -12px;
+    padding-top: 12px;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+.object-usecases {
+    padding-bottom: 34px;
+}
+.usecases-category {
+    margin-bottom: 20px;
+}
+.usecases-category .object-right-column img {
+    margin-right: -2px;
+    margin-bottom: -2px;
+}
+.usecases-category .object-left-column {
+    text-align: right;
+    padding-right: 40px;
+    width: 200px;
+}
+.usecases-category .object-left-column p {
+    font-weight: bold;
+    font-size: 14px;
+}
 .calc-caption {
     margin-top: 18px;
 }
