@@ -1,0 +1,6 @@
+Арочные конструкции:
+<ul class="root">
+    {% for item in menu %}
+        <li{% if item.get_absolute_url == current %} class="curr"{% endif %}><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+{% block title %}
+	{% if page.title %}
+	        {{ page.title }}
+	{% else %}
+	        {{product.name }}
+	{% endif %}
+ &mdash;
+{% endblock %}
+
+{% block center %}
+{{ product.name }}
+<img src="{{ product.image.url }}" />
+{% thumbnail product.draft "100x60" crop="center" as img %}
+	<img src="{{ img.url }}" width="{{ img.x }}" height="{{ img.y }}" />
+{% endthumbnail %}
+{{ product.description|safe }}
+{% for item in properties %}
+<li><img src="{{ item.image.url }}" />{{ item.name }}</li>
+{% endfor %}
+
+            {% regroup product.productimage_set.all by type as images %}
+                {% for image in images %}
+                    <li>
+                        <!-- Иконка категории  -->
+                        <img title="{{ image.grouper.name }}" src="{{ image.grouper.icon.url }}" />
+                        <p>{{ image.grouper.name }}</p>
+                        <ul>
+                            {% for im in image.list %}
+                              <li>
+                                <!-- Фоточка -->
+                                {% thumbnail im.image "100x60" crop="center" as img %}
+                                    <img src="{{ img.url }}" width="{{ img.x }}" height="{{ img.y }}" />
+                                {% endthumbnail %}
+
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+
+{% endblock %}
