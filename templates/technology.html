@@ -3,35 +3,39 @@
 {% load thumbnail %}
 
 {% block title %}
-	{% if page.title %}
-	        {{ page.title }}
-	{% else %}
-	        Описание технологии
-	{% endif %}
+    {% if page.title %}
+            {{ page.title }}
+    {% else %}
+            Описание технологии
+    {% endif %}
  &mdash;
 {% endblock %}
 
-{% block center %}
-	{% for item in list %}
-		{% include 'tech_menu.html' %}
-		<a name="{{ item.alias }}" />
-		{{ item.description|safe }}
-		{% if item.alias == "assemble" %}
-			{% include 'tech_assemble.html' %}
-		{% elif item.alias == "requirements" %}
-			{% include 'tech_requirements.html' %}
-		{% endif %}
-		{% for property in item.techproperty_set.all %}
-			{% thumbnail property.image1 "200x120" crop="center" as img %}
-            	<img src="{{ img.url }}" width="{{ img.x }}" height="{{ img.y }}" />
-            {% endthumbnail %}
-            {{ property.name }}
-            {% thumbnail property.image2 "200x120" crop="center" as img %}
-            	<img src="{{ img.url }}" width="{{ img.x }}" height="{{ img.y }}" />
-            {% endthumbnail %}
-            {% thumbnail property.image3 "200x120" crop="center" as img %}
-            	<img src="{{ img.url }}" width="{{ img.x }}" height="{{ img.y }}" />
-            {% endthumbnail %}
-		{% endfor %}
-	{% endfor %}
+{% block center %}    
+    <!-- main -->
+    <section class="main">
+        {% for item in list %}
+            <div class="{{ item.alias }}" id="{{ item.alias }}">
+                <section class="column tech-left-column">
+                    {% include 'tech_menu.html' %}
+                </section>
+                <section class="column tech-right-column">
+                    {% if item.alias == "tech-description" %}
+                        {% include 'tech_description.html' %}
+                    {% elif item.alias == "assembly" %}
+                        {% include 'tech_assembly.html' %}
+                    {% elif item.alias == "tech-stats" %}
+                        {% include 'tech_stats.html' %}
+                    {% elif item.alias == "insulation" %}
+                        {% include 'tech_insulation.html' %}
+                    {% elif item.alias == "basement" %}
+                        {% include 'tech_basement.html' %}
+                    {% elif item.alias == "windows-and-gates" %}
+                        {% include 'tech_windows_and_gates.html' %}
+                    {% endif %}
+                </section>
+            </div>
+        {% endfor %}
+    </section>
+    <!-- end of main -->
 {% endblock %}

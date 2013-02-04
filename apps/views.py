@@ -21,6 +21,7 @@ class ProductView(DetailView):
 	slug_field = 'alias'
 	def get_context_data(self, **kwargs):
 		context = super(ProductView,self).get_context_data(**kwargs)
+		context['products'] = Product.objects.published()
 		context['properties'] = Property.objects.published().filter(on_product_page=True)
 		return context
 product = ProductView.as_view()
@@ -33,7 +34,8 @@ class TechView(ListView):
 
 	def get_context_data(self, **kwargs):
 		context = super(TechView,self).get_context_data(**kwargs)
-
+		context['products'] = Product.objects.published()
+		context['properties'] = Property.objects.published().filter(on_product_page=True)
 		return context
 technology = TechView.as_view()
 

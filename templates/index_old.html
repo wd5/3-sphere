@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% if page.title %}
+    {% block title %}
+        {{ page.title }} &mdash;
+    {% endblock %}
+{% endif %}
+
+{% block center %}
+    {% for item in products %}
+        <div>
+            <img src="{{ item.image.url }}" />
+            <p>Арочная конструкция <a href="">{{ item.name }}</a></p>
+            <p><b>Применение</b></p>
+            <p>{{ item.description_for_main }}</p>
+            {% regroup item.productimage_set.all by type as images %}
+                {% for image in images %}
+                    <li>
+                        <!-- Иконка категории  -->
+                        <img title="{{ image.grouper.name }}" src="{{ image.grouper.icon_for_main.url }}" />
+                        <ul>
+                            {% for im in image.list %}
+                              <li>
+                                <!-- Фоточка -->
+                                {% thumbnail im.image "100x60" crop="center" as img %}
+                                    <img src="{{ img.url }}" width="{{ img.x }}" height="{{ img.y }}" />
+                                {% endthumbnail %}
+
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+        </div>
+    {% endfor %}
+<h2>Преимущества</h2>
+<ul>
+    {% for item in properties %}
+        <li><img src="{{ item.image.url }}" />{{ item.name }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

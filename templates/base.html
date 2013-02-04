@@ -1,13 +1,10 @@
 {% load siteblocks_extras %}
+<!doctype html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
     <meta name="description" content="{% block META_description %}{{ meta.description }}{% endblock %}"/>
     <meta name="keywords" content="{% block META_keywords %}{{ meta.keywords }}{% endblock %}"/>
-    <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
-    <!--[if lte IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/static/css/ie.css" /><![endif]-->
-    <script type="text/javascript" src="/static/js/jquery.js"></script>
-    <script type="text/javascript" src="/static/js/script.js"></script>
     <title>
         {% block title %}
             {% if meta.title %}
@@ -18,14 +15,67 @@
         {% endblock %}
         {{ site_name }}
     </title>
+    <link rel="stylesheet" href="/media/css/reset.css">
+    <link rel="stylesheet" href="/media/css/style.css">
+    <!--[if lt IE 8]>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/media/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="/media/js/script.js"></script>
 </head>
-
 <body>
-{% block_menu request.path %}
-<a href="/technology/">Описание технологии</a>
-<a href="/about/">Контакты</a>
-<a href="/calculation/">Рассчитать стоимость</a>
-{% block_static 'phone' %}<br>
-{% block center %}{% endblock %}
+    <!-- header -->
+    <header class="header">
+        <div class="header-inner">
+            <figure class="header-logo-box">
+                <a href="/"><img src="/media/images/header-logo.png"></a>
+            </figure>
+            <figure class="header-main-nav-box">
+                <div class="header-main-nav-caption">Арочные конструкции</div>
+                <ul class="header-nav">
+                    {% for item in products %}
+                    <li><a href="/{{ item.alias }}">{{ item.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </figure>
+            <figure class="header-contacts-box">
+                <div class="header-phone"><span class="phone-code">(3022)</span> 71-77-71</div><div class="clear"></div>
+                <ul class="header-nav">
+                    <li><a href="/technology/">Описание технологии</a></li>
+                    <li><a href="/about/">Контакты</a></li>
+                </ul>
+                <a href="/calculation/" class="calculate-button">Рассчитать стоимость</a>
+            </figure>
+        </div>
+    </header>
+    <!-- end of header -->
+
+    {% block center %}{% endblock %}
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p class="copyright">
+                © 2011-2012
+                Сфера+
+            </p>
+
+            <p class="footer-contacts">
+                г. Чита, ул. Ленина, 25, офис 325
+                телефон +7 (3022) 71-77-71
+            </p>
+
+            <p class="calculate-button">
+                <a href="" >Рассчитать стоимость</a>
+            </p>
+
+            <p class="octoberweb">
+                Разработка сайта
+                <a href="">OctoberWeb</a>
+            </p>
+        </div>
+    </footer>
+    <!-- end of footer -->
 </body>
-</html>
+</html>   
