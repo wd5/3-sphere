@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from django.views.generic import TemplateView, DetailView, ListView
-from apps.products.models import Product, Property, Tech
-
+from django.views.generic import TemplateView, DetailView, ListView, CreateView
+from apps.products.models import Product, Property, Tech, Request
+from apps.siteblocks.models import Settings
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -36,3 +36,22 @@ class TechView(ListView):
 
 		return context
 technology = TechView.as_view()
+
+class CalculationView(TemplateView):
+    template_name = 'calculation.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CalculationView,self).get_context_data(**kwargs)
+        try:
+        	context['price'] = Settings.objects.get(name='price').value
+        	context['price_warm'] = Settings.objects.get(name='price_warm').value
+        except:
+        	pass
+        return context
+calculation = CalculationView.as_view()
+
+class RequestView(CreateView):
+	template_name = 'request.html'
+	model = Request
+	success_url = u'/thanks/'
+request = RequestView.as_view()

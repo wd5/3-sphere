@@ -3,10 +3,12 @@ from django.conf.urls.defaults import patterns, include, url
 
 #from apps.app.urls import urlpatterns as app_url
 
-from views import index, product, technology
+from views import index, product, technology, calculation, request
 
 urlpatterns = patterns('',
     url(r'^$', index, name='index'),
     url(r'^technology/$', technology, name='technology'),
+    url(r'^calculation/$', calculation, name='calculation'),
+    url(r'^request/$', request, name='request'),
     url(r'^(?P<slug>[\w-]+)/$', product, name='product'),
 )
