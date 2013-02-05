@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% if page.title %}
+    {% block title %}
+        {{ page.title }} &mdash;
+    {% endblock %}
+{% endif %}
+
+{% block head %}
+<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU&coordorder=longlat" type="text/javascript"></script>
+<script type="text/javascript">
+    ymaps.ready(init);
+    var contactsMap;
+
+    function init(){     
+        contactsMap = new ymaps.Map ("contacts-map", {
+            center: [113.518971,52.026144],
+            zoom: 15,
+        });
+        var contactsPlacemark = new ymaps.Placemark(
+                [113.519014,52.025899]
+                );
+        contactsMap.geoObjects.add(contactsPlacemark); 
+        contactsMap.controls.add(
+           new ymaps.control.ZoomControl()
+        );
+    }
+</script>
+{% endblock %}
+
+{% block center %}
+    <!-- main -->
+    <section class="main contacts-main">
+        <div class="contacts-header">Контакты</div>
+
+        <div>
+            <section class="column main-left-column">
+                <div class="contacts-address">
+                <span class="address-city">Чита</span>,<br>
+                Ленина, 25<br>
+                офис 325</div>
+                <div class="phone"><span class="phone-code">(3022)</span> 71-77-71</div>
+            </section>
+
+            <section class="column main-right-column">
+                <div id="contacts-map"></div>
+            </section>
+        </div>
+    </section>
+    <!-- end of main -->
+{% endblock %}

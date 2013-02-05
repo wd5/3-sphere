@@ -840,6 +840,53 @@ a:visited {
     height: 33px;
     background: url(../images/send-button.png);
 }
+.contacts-main {
+    padding-bottom: 90px;
+}
+.contacts-main .main-left-column {
+    width: 240px;
+    margin-top: 36px;
+}
+.contacts-header {
+    margin: 72px 0 0 240px;
+    font-size: 36px;
+    font-weight: bold;
+}
+#contacts-map {
+    width: 600px;
+    height: 450px;
+    margin-top: 36px;
+    padding
+}
+.contacts-address {
+    margin-left: 64px;
+    position: relative;
+}
+.contacts-address {
+    font-size: 18px;
+    line-height: 24px;
+}
+.address-city {
+    font-size: 14px;
+}
+.contacts-address:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 8px;
+    left: -50px;
+    width: 27px;
+    height: 39px;
+    background: url(../images/address-icon-big.png);
+}
+.contacts-main .phone {
+    font-size: 18px;
+    margin-top: 32px;
+}
+.contacts-main .phone-code {
+    font-size: 14px;
+    margin-right: 16px;
+}
 /* end of main*/
 
 /* footer */

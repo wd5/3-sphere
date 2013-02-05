@@ -57,3 +57,12 @@ class RequestView(CreateView):
 	model = Request
 	success_url = u'/thanks/'
 request = RequestView.as_view()
+
+class ContactsView(TemplateView):
+    template_name = 'contacts.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ContactsView, self).get_context_data(**kwargs)
+        context['products'] = Product.objects.published()
+        return context
+contacts = ContactsView.as_view()
