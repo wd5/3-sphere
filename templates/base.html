@@ -39,8 +39,16 @@
             <figure class="header-contacts-box">
                 <div class="header-phone"><span class="phone-code">(3022)</span> 71-77-71</div><div class="clear"></div>
                 <ul class="header-nav">
-                    <li><a href="/technology/">Описание технологии</a></li>
-                    <li><a href="/contacts/">Контакты</a></li>
+                    {% if request.path == '/technology/' %}
+                        <li class="current">Описание технологии</li>
+                    {% else %}
+                        <li><a href="/technology/">Описание технологии</a></li>
+                    {% endif %}
+                    {% if request.path == '/contacts/' %}
+                        <li class="current">Контакты</li>
+                    {% else %}
+                        <li><a href="/contacts/">Контакты</a></li>
+                    {% endif %}
                 </ul>
                 <a href="/calculation/" class="calculate-button">Рассчитать стоимость</a>
             </figure>

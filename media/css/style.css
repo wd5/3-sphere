@@ -222,6 +222,9 @@ a:visited {
 .slider-item-text a{
     font-weight: bold;
 }
+.product-info {
+    height: 100px;
+}
 .main-text-left-column {
     width: 33%;
     font-size: 24px;
@@ -237,6 +240,12 @@ a:visited {
 .usecases {
     width:719px;
     margin: 44px 0 65px 0;
+}
+.index-usecases {
+    display: none;
+}
+.index-usecases.current {
+    display: block;
 }
 .usecases-gallery {
     margin: 40px 0 0 0;
@@ -466,12 +475,19 @@ a:visited {
     padding: 14px 27px 8px 18px;
     font-size: 18px;
     margin-right: -25px;
-    background: #ffffff;
     border-radius: 5px;
 }
+.opened-height-chooser {
+    background: #ffffff;
+}
 .height-chooser li {
+    visibility: hidden;
     margin-bottom: 7px;
     text-align: right;
+}
+.height-chooser li.current,
+.opened-height-chooser li {
+    visibility: visible;
 }
 .height-chooser a {
     color: #89a8c6;
@@ -828,7 +844,7 @@ a:visited {
     color: #9d9d9d;
 }
 .total .label {
-    top: 105px;
+    top: 110px;
     letter-spacing: 1px;
 }
 .calc-size-chooser .size-chooser-img {
@@ -836,9 +852,20 @@ a:visited {
 }
 .calc-button {
     display: inline-block;
-    width: 174px;
-    height: 33px;
+    width: 154px;
+    height: 23px;
+    padding: 5px 10px;
     background: url(../images/send-button.png);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 1px 1px 1px #000;
+}
+.calc-button:visited {
+    color: white;
 }
 .contacts-main {
     padding-bottom: 90px;

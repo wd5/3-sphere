@@ -17,7 +17,7 @@
             <div class="slider">
                 <ul id="index-slider">
                 	{% for item in products %}
-                        <div class="slider-item-box">
+                        <div class="slider-item-box" data-id="{{ item.id }}">
                             <img src="{{ item.image.url }}" alt="">
                             <div class="slider-item-text">
                                 <h4>Арочная конструкция</h4>
@@ -32,90 +32,40 @@
             </div>
             <!-- end of slider -->
 
-            <div class="usecases">
-                <div class="column main-text-left-column">
-                    <h3>Применение <br>наших ангаров</h3>
-                </div>
-                <div class="column main-text-right-column">
-                    Универсальный тип здания, которое используется как склад, гараж, терминал. Можно использовать в составе спортивного, выставочного или торгового комплекса или как укрытие для крупногабаритной техники.
+            {% for item in products %}
+            <div class="usecases index-usecases switchable {%if forloop.first%}current{%endif%}" data-id="{{item.id}}">
+                <div class="product-info">
+                    <div class="column main-text-left-column">
+                    <h3>Применение <br>наших конструкций</h3>
+                    </div>
+                    
+                    <div class="column main-text-right-column">
+                        {{ item.description_for_main }}
+                    </div>
                 </div>
 
                 <div class="usecases-gallery">
-                    <img class="usecase-image" src="media/images/usecases-image-1.png" alt="">
-                    <div class="usecases-header">
-                        <div class="usecases-header-inner">
-                            <img class="usecase-category-img" src="media/images/usecase-category-image-1.png" alt="">
-                            <div class="usecases-header-text">
-                            <p>Производственные
-                            и складские
-                            помещения</p> 
+                    {% regroup item.productimage_set.all by type as images %}
+                    {% for image_list in images %}
+                        {% for image in image_list.list %}
+                            {% if forloop.first %}
+                            <img class="usecase-image" src="/media/{{ image.image }}" alt="">
+                            <div class="usecases-header">
+                                <div class="usecases-header-inner">
+                                    <img class="usecase-category-img" src="/media/{{image_list.grouper.icon_for_main}}" alt="">
+                                    <div class="usecases-header-text">
+                                    <p>{{image_list.grouper}}</p> 
+                                    </div>
+                                </div>                        
                             </div>
-                        </div>                        
-                    </div>
-                    <img class="usecase-image" src="media/images/usecases-image-1.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-2.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-3.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-4.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-5.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-6.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-7.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-1.png" alt="">
-                    <div class="usecases-header">
-                        <div class="usecases-header-inner">
-                            <img class="usecase-category-img" src="media/images/usecase-category-image-2.png" alt="">
-                            <p>Ремонтные
-                            мастерские<br>
-                            и СТО</p> 
-                        </div>                        
-                    </div>
-                    <img class="usecase-image" src="media/images/usecases-image-3.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-7.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-5.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-4.png" alt="">
-                    <div class="usecases-header">
-                        <div class="usecases-header-inner">
-                            <img class="usecase-category-img" src="media/images/usecase-category-image-3.png" alt="">
-                            <div class="usecases-header-text">
-                            <p>Гараж,
-                            автостоянка,
-                            автомойка</p>
-                            </div> 
-                        </div>                        
-                    </div>
-                    <img class="usecase-image" src="media/images/usecases-image-1.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-3.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-6.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-1.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-4.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-7.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-1.png" alt="">
-                    <div class="usecases-header">
-                        <div class="usecases-header-inner">
-                            <img class="usecase-category-img" src="media/images/usecase-category-image-4.png" alt="">
-                            <div class="usecases-header-text">
-                            <p>Спортивный
-                            комплекс</p>
-                            </div> 
-                        </div>                        
-                    </div>
-                    <img class="usecase-image" src="media/images/usecases-image-7.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-6.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-5.png" alt="">
-                    <div class="usecases-header">
-                        <div class="usecases-header-inner">
-                            <img class="usecase-category-img" src="media/images/usecase-category-image-5.png" alt="">
-                            <div class="usecases-header-text">
-                                <p>Сельское 
-                                хозяйство</p>
-                            </div>       
-                        </div>                        
-                    </div>
-                    <img class="usecase-image" src="media/images/usecases-image-3.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-2.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-1.png" alt="">
-                    <img class="usecase-image" src="media/images/usecases-image-4.png" alt="">
+                            {% else %}
+                            <img class="usecase-image" src="/media/{{ image.image }}" alt="">
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
                 </div>
             </div>
+            {% endfor %}
         </section>
         <!-- end of left column -->
 
