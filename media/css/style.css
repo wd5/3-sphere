@@ -31,13 +31,13 @@ html {
     min-height: 100%;
 }
 body {
-    margin: 0 0 70px; /* bottom = footer height */
-    overflow-x: hidden;
+    margin: 0 0 70px;
     background: #f5f4f5;
     font: 15px/18px 'PT Sans', Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 .header, .main, .footer-inner {
-    width: 960px;
+    width: 960px;   
     margin: 0 auto;
 }
 a,
@@ -51,6 +51,9 @@ a:visited {
     display: inline-block;
     vertical-align: top;
     margin-right: -4px;
+}
+.modal {
+    display: none;
 }
 /* end of mainstyles */
 
@@ -444,9 +447,6 @@ a:visited {
 .tech-stats {
     margin-top: 130px;
 }
-.stats-list li {
-    margin-bottom: 16px;
-}
 .stats-list li:after {
     content: '';
     display: block;
@@ -704,6 +704,7 @@ a:visited {
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
+    border-radius: 5px;
 }
 .object-usecases {
     padding-bottom: 34px;
@@ -867,6 +868,80 @@ a:visited {
 .calc-button:visited {
     color: white;
 }
+.dops h4 {
+    margin-bottom: 24px;
+}
+.dop-label {
+    font-weight: bold;
+    font-size: 18px;
+}
+.demensions {
+    display: inline-block;
+    position: relative;
+    top: -20px;
+    margin-left: -95px;
+}
+.calc-message-modal .caption {
+    margin-left: 40px;
+}
+.calc-message-modal .calc-caption-image {
+    margin-left: -20px;
+    width: 200px;
+}
+.calc-message-modal .total {
+    margin-left: 244px;
+}
+.calc-message-modal .name-n-phone {
+    background: #f7eed1;
+    padding: 1px 0;
+}
+.calc-message-modal .email {
+    padding: 1px 0;
+}
+.calc-message-modal .calc-form-input {
+    text-align: left;
+    width: 272px;
+    height: 22px;
+}
+.calc-message-modal .name,
+.calc-message-modal .phone,
+.calc-message-modal .email {
+    position: relative;
+    margin-left: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.calc-message-modal .phone {
+    margin-top: 50px;
+}
+.calc-message-modal .phone {
+    position: relative;
+    margin-left: 40px;
+}
+.calc-message-modal .phone-code {
+    margin-left: -31px;
+    color: #cebf91;
+    font-size: 24px;
+}
+.calc-message-modal .name-n-phone .label,
+.calc-message-modal .email .label {
+    color: #6b5e32;
+    font-size: 24px;
+    display: inline-block;
+    width: 200px;
+}
+.calc-message-modal .email .label {
+    color: black;
+}
+.calc-message-modal .hint {
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 220px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #cebf91;
+}
 .contacts-main {
     padding-bottom: 90px;
 }
@@ -883,7 +958,6 @@ a:visited {
     width: 600px;
     height: 450px;
     margin-top: 36px;
-    padding
 }
 .contacts-address {
     margin-left: 64px;

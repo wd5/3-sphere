@@ -15,10 +15,17 @@ var IndexSlider = function(){
             nextText: '',
             prevText: '',
             onSlideNext: function(newIndex){ChangeIndexContent(newIndex.attr('data-id'))},
-            onSlidePrev: function(newIndex){ChangeIndexContent(newIndex.attr('data-id'))},
+            onSlidePrev: function(newIndex){ChangeIndexContent(newIndex.attr('data-id'))}
         });
 }
 
+var Fancybox = function(){
+    $('.fancybox').fancybox({
+        padding: 0
+    });
+};
+
 $(function(){
     IndexSlider();
+    Fancybox();
 });

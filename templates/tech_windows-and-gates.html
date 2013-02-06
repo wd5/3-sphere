@@ -1,0 +1,16 @@
+<div class="column aside">
+    <img src="{{ item.image.url }}" alt="">
+    <p>{{ item.description }}</p>
+</div>
+<ul class="column windows-and-gates-main">
+    {% for property in item.techproperty_set.all %}
+    <li>
+        <img class="left-img" src="{{ property.image1.url }}" alt="">
+        <div>
+            <h3>{{ property.name }}</h3>
+            <p>{{ property.description }}</p>
+        </div>
+        <img class="right-img" src="{{ property.image2.url }}" alt="">
+    </li>
+    {% endfor %}
+</ul>

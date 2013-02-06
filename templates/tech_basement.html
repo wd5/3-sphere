@@ -1,33 +1,13 @@
+{% for property in item.techproperty_set.all %}
 <section>
-    <img src="/media/images/basement-1-main.png" alt="" class="main-img">
+    <img src="{{ property.image1.url }}" alt="" class="main-img">
     <div class="inner-text-box">
-        <h3>Ленточный фундамент</h3>
-        <p>Сегодня их используют при возведении домов любого типа, в том числе с тяжелыми стенами, цокольными этажами и подвалами. Ленточные адывают сплошной линией под всеми наружными и внутренними капитальными стенами. Для устройства ленточного фундамента отлован. Внутри него размечается линия фундамента. По этой линии устанавливают опалубку. После того как опалубка нее помещают укрепляющую металлическую арматуру, а затем заливают бетоном.</p>
+        <h3>{{ property.name }}</h3>
+        <p>{{ property.description }}</p>
     </div>
     <div class="inner-image-box">
-        <img src="/media/images/basement-1-1.png" alt="" class="side-img">
-        <img src="/media/images/basement-1-2.png" alt="" class="side-img">
+        <img src="{{ property.image2.url }}" alt="" class="side-img">
+        <img src="{{ property.image3.url }}" alt="" class="side-img">
     </div>
 </section>
-<section>
-    <img src="/media/images/basement-2-main.png" alt="" class="main-img">
-    <div class="inner-text-box">
-        <h3>Столбчатый фундамент</h3>
-        <p>Дают значительную экономию материала. Устройство фундаментов начинается с разбивки плана сооружения. Затем бурят или выкапывают скважины 450 мм, глубиной 500 - 750 мм., через каждый 1 - 1,5 м. по периметру. Заливается бетон и устанавливаются закладные.</p>
-    </div>
-    <div class="inner-image-box">
-        <img src="/media/images/basement-2-1.png" alt="" class="side-img">
-        <img src="/media/images/basement-2-2.png" alt="" class="side-img">
-    </div>
-</section>
-<section>
-    <img src="/media/images/basement-3-main.png" alt="" class="main-img">
-    <div class="inner-text-box">
-        <h3>Монолитная плита</h3>
-        <p>Дают значительную экономию материала. Устройство фундаментов начинается с разбивки плана сооружения. Затем бурят или выкапывают скважины 450 мм, глубиной 500 - 750 мм., через каждый 1 - 1,5 м. по периметру. Заливается бетон и устанавливаются закладные.</p>
-    </div>
-    <div class="inner-image-box">
-        <img src="/media/images/basement-2-1.png" alt="" class="side-img">
-        <img src="/media/images/basement-2-2.png" alt="" class="side-img">
-    </div>
-</section>
+{% endfor %}

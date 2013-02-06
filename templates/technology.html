@@ -4,9 +4,9 @@
 
 {% block title %}
     {% if page.title %}
-            {{ page.title }}
+        {{ page.title }}
     {% else %}
-            Описание технологии
+        Описание технологии
     {% endif %}
  &mdash;
 {% endblock %}
@@ -20,19 +20,9 @@
                     {% include 'tech_menu.html' %}
                 </section>
                 <section class="column tech-right-column">
-                    {% if item.alias == "tech-description" %}
-                        {% include 'tech_description.html' %}
-                    {% elif item.alias == "assembly" %}
-                        {% include 'tech_assembly.html' %}
-                    {% elif item.alias == "tech-stats" %}
-                        {% include 'tech_stats.html' %}
-                    {% elif item.alias == "insulation" %}
-                        {% include 'tech_insulation.html' %}
-                    {% elif item.alias == "basement" %}
-                        {% include 'tech_basement.html' %}
-                    {% elif item.alias == "windows-and-gates" %}
-                        {% include 'tech_windows_and_gates.html' %}
-                    {% endif %}
+                    {% with template="tech_"|add:item.alias|add:".html" %}
+                        {% include template %}                    
+                    {% endwith %}
                 </section>
             </div>
         {% endfor %}

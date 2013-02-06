@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load thumbnail %}
+{% load pymorphy_tags %}
 
 {% if page.title %}
     {% block title %}
@@ -36,7 +37,7 @@
             <div class="usecases index-usecases switchable {%if forloop.first%}current{%endif%}" data-id="{{item.id}}">
                 <div class="product-info">
                     <div class="column main-text-left-column">
-                    <h3>Применение <br>наших конструкций</h3>
+                    <h3>Применение <br>наших {{ item.name|inflect:"рд,мн" }}</h3>
                     </div>
                     
                     <div class="column main-text-right-column">

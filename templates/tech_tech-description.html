@@ -1,0 +1,24 @@
+<ul class="advantages advantages-tech">
+    {% for prop in properties|slice:":3" %}
+        <li>
+            <img src="{{ prop.image.url }}" class="advantage-icon">
+            <h3>{{ prop.name }}</h3>
+            <p>{{ prop.description }}</p>
+        </li>
+    {% endfor %}
+</ul>
+<div class="tech-text">
+    {{ item.description|safe }}
+</div>
+<ul class="advantages advantages-tech">
+    {% for prop in properties|slice:"3:6" %}
+        <li>
+            <img src="{{ prop.image.url }}" class="advantage-icon">
+            <h3>{{ prop.name }}</h3>
+            <p>{{ prop.description }}</p>
+        </li>
+    {% endfor %}
+</ul>
+<div class="tech-text">
+    {{ item.description_2|safe }}
+</div>

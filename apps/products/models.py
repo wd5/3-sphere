@@ -25,7 +25,7 @@ class Product(models.Model):
         verbose_name = u'описание для главной',
     )
     description = models.TextField(
-        verbose_name = u'описание для главной',
+        verbose_name = u'описание для страницы конструкции',
     )
     alias = models.CharField(
         verbose_name = u'Алиас', 
@@ -175,6 +175,11 @@ class Tech(models.Model):
     description = models.TextField(
         verbose_name = u'описание для главной',
         blank = True,
+    )
+    description_2 = models.TextField(
+        verbose_name = u'описание 2',
+        blank = True,
+        null=True,
     )
     alias = models.CharField(
         verbose_name = u'Алиас', 

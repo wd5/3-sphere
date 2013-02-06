@@ -26,12 +26,10 @@
         </div>
         <div class="object-main-advantages">
             <section class="column object-left-column">
-                <img src="/media/images/object-advantages-image.png" alt="">
+                <img src="{{ product.draft.url }}" alt="">
             </section>
             <section class="column object-center-column object-text">
-                <p class="focused-p">Строение арочного типа уже не одно столетие остается наиболее оптимальной строительной конструкцией, позволяющей быстро и дешево возводить здания самого широкого назначения с минимальными эксплуатиционными затратами.</p>
-                <p>Универсальный тип здания, которое используется как склад, гараж, терминал и т.д. Ширина до 18 метров и высота до 9 метров позволяют использовать его также в составе спортивного, выставочного или торгового комплекса или как укрытие для крупногабаритной техники.</p>
-                <p>По окончанию строительства не требуются отделочные работы, а также ремонтные работы раз в три года. За счёт всего этого стоимость ангара значительно ниже по сравнению с дугими технологиями строительства зданий.</p>
+                {{ product.description|safe }}
             </section>
             <!-- right column -->
             <section class="column main-right-column object-advantages">
@@ -53,73 +51,20 @@
             <!-- end of right column -->
         </div>
         <div class="usecases object-usecases">
+            {% regroup product.productimage_set.all by type as images %}
+            {% for image_list in images %}
             <div class="usecases-category">
                 <section class="column object-left-column">
-                    <img src="/media/images/object-usecase-category-image-1.png" alt="">
-                    <p>Производственные
-                    и складские помещения</p>
+                    <img src="/media/{{image_list.grouper.icon}}" alt="">
+                    <p>{{image_list.grouper}}</p>
                 </section>
                 <section class="column object-right-column">
-                    <img src="/media/images/usecases-image-1.png" alt="">
-                    <img src="/media/images/usecases-image-2.png" alt="">
-                    <img src="/media/images/usecases-image-3.png" alt="">
-                    <img src="/media/images/usecases-image-6.png" alt="">
-                    <img src="/media/images/usecases-image-3.png" alt="">
-                    <img src="/media/images/usecases-image-1.png" alt="">
-                    <img src="/media/images/usecases-image-2.png" alt="">
-                    <img src="/media/images/usecases-image-6.png" alt="">
+                {% for image in image_list.list %}
+                    <img src="{{ image.image.url }}" alt="">
+                {% endfor %}
                 </section>
             </div>
-            <div class="usecases-category">
-                <section class="column object-left-column">
-                    <img src="/media/images/object-usecase-category-image-2.png" alt="">
-                    <p>ремонтные мастерские
-                    и СТО</p>
-                </section>
-                <section class="column object-right-column">
-                    <img src="/media/images/usecases-image-3.png" alt="">
-                    <img src="/media/images/usecases-image-5.png" alt="">
-                    <img src="/media/images/usecases-image-6.png" alt="">
-                    <img src="/media/images/usecases-image-5.png" alt="">
-                </section>
-            </div>
-            <div class="usecases-category">
-                <section class="column object-left-column">
-                    <img src="/media/images/object-usecase-category-image-3.png" alt="">
-                    <p>Гараж, автостоянка,
-                    Автомойка</p>
-                </section>
-                <section class="column object-right-column">
-                    <img src="/media/images/usecases-image-6.png" alt="">
-                    <img src="/media/images/usecases-image-7.png" alt="">
-                    <img src="/media/images/usecases-image-1.png" alt="">
-                    <img src="/media/images/usecases-image-7.png" alt="">
-                    <img src="/media/images/usecases-image-1.png" alt="">
-                    <img src="/media/images/usecases-image-6.png" alt="">
-                </section>
-            </div>
-            <div class="usecases-category">
-                <section class="column object-left-column">
-                    <img src="/media/images/object-usecase-category-image-4.png" alt="">
-                    <p>Спортивный комплекс</p>
-                </section>
-                <section class="column object-right-column">
-                    <img src="/media/images/usecases-image-8.png" alt="">
-                    <img src="/media/images/usecases-image-9.png" alt="">
-                    <img src="/media/images/usecases-image-8.png" alt="">
-                </section>
-            </div>
-            <div class="usecases-category">
-                <section class="column object-left-column">
-                    <img src="/media/images/object-usecase-category-image-5.png" alt="">
-                    <p>Сельское хозяйство</p>
-                </section>
-                <section class="column object-right-column">
-                    <img src="/media/images/usecases-image-10.png" alt="">
-                    <img src="/media/images/usecases-image-11.png" alt="">
-                    <img src="/media/images/usecases-image-10.png" alt="">
-                </section>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <!-- end of main -->

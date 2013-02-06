@@ -19,7 +19,7 @@ INSTALLED_APPS += (
     'apps.products',
 
     'sorl.thumbnail',
-    #'south',
+    # 'south',
     #'captcha',
 )
 

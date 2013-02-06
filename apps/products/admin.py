@@ -52,7 +52,9 @@ class TechPropertyInline(admin.TabularInline):
 
 class TechAdminForm(forms.ModelForm):
     description = forms.CharField(widget=Redactor(attrs={'cols': 110, 'rows': 20}),)
+    description_2 = forms.CharField(widget=Redactor(attrs={'cols': 110, 'rows': 20}),required=False)
     description.label=u'Описание'
+    description_2.label=u'Описание 2'
 
     class Meta:
         model = Tech
