@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.shortcuts import redirect
 from django.views.generic import TemplateView, DetailView, ListView, CreateView
 from apps.products.models import Product, Property, Tech, Request
 from apps.siteblocks.models import Settings
@@ -35,7 +36,7 @@ class TechView(ListView):
 	def get_context_data(self, **kwargs):
 		context = super(TechView,self).get_context_data(**kwargs)
 		context['products'] = Product.objects.published()
-		context['properties'] = Property.objects.published().filter(on_product_page=True)
+		context['properties'] = Property.objects.published()
 		return context
 technology = TechView.as_view()
 
@@ -44,6 +45,7 @@ class CalculationView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(CalculationView,self).get_context_data(**kwargs)
+        context['products'] = Product.objects.published()
         try:
         	context['price'] = Settings.objects.get(name='price').value
         	context['price_warm'] = Settings.objects.get(name='price_warm').value
@@ -53,9 +55,31 @@ class CalculationView(TemplateView):
 calculation = CalculationView.as_view()
 
 class RequestView(CreateView):
-	template_name = 'request.html'
-	model = Request
-	success_url = u'/thanks/'
+    template_name = 'calculation_form.html'
+    model = Request
+    success_url = u'/thanks/'
+
+    def get_context_data(self, **kwargs):
+        context = super(RequestView,self).get_context_data(**kwargs)
+        context['products'] = Product.objects.published()
+        context['success_url'] = self.success_url
+        return context
+
+    def form_valid(self, form):
+        super(RequestView, self).form_valid()
+        response = render_to_response(self.template_name, 
+                                      self.get_context_data(success=1, success_url=self.success_url),
+                                      context_instance=RequestContext(self.request))
+        return HttpResponse(response)
+
+    def form_invalid(self, form):
+        super(RequestView, self).form_invalid()
+        response = render_to_response(self.template_name, 
+                                      self.get_context_data(form=form, success=0),
+                                      context_instance=RequestContext(self.request))
+        return HttpResponse(response)
+
+
 request = RequestView.as_view()
 
 class ContactsView(TemplateView):

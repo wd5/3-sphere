@@ -8,7 +8,7 @@
     <title>
         {% block title %}
             {% if meta.title %}
-                {% ifnotequal meta.title ''  %}
+                {% ifnotequal meta.title|striptags ''  %}
                     {{ meta.title }} &mdash;
                 {% endifnotequal %}
             {% endif %}
@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="/media/css/reset.css">
     <link rel="stylesheet" href="/media/css/style.css">
     <link rel="stylesheet" href="/media/css/jquery.fancybox.css">
-    <!--[if lt IE 8]>
-    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+    <!--[if lt IE 9]>
+       <script type="text/javascript" src="/media/js/ie8fix.js"></script>
     <![endif]-->
     <script type="text/javascript" src="/media/js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="/media/js/jquery.bxslider.min.js"></script>
@@ -40,7 +40,7 @@
                     {% block_menu request.path %}
                 </figure>
                 <figure class="header-contacts-box">
-                    <div class="header-phone"><span class="phone-code">(3022)</span> 71-77-71</div><div class="clear"></div>
+                    <div class="header-phone"><span class="phone-code">(3022)</span> {% block_static 'phone' %}</div><div class="clear"></div>
                     <ul class="header-nav">
                         {% if request.path == '/technology/' %}
                             <li class="current">Описание технологии</li>
@@ -71,7 +71,7 @@
             </p>
 
             <p class="footer-contacts">
-                г. Чита, ул. Ленина, 25, офис 325
+                г. Чита, ул. Анохина, 105, пом. 34
                 телефон +7 (3022) 71-77-71
             </p>
 

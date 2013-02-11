@@ -3,16 +3,21 @@
 	<!-- main -->
     <section class="main">
         <div class="caption">
-            <img class="calc-caption-image" src="/media/images/calc-caption-image.png" alt="" class="calc-header-img">
+            {% for product in products %}
+            <img data-product-id="{{product.id}}" class="calc-caption-image product-switchable {% if not forloop.first%}hidden{% endif %}" src="/media/images/calc-caption-image.png" alt="" class="calc-header-img">
+            {% endfor %}
             <div class="calc-caption">
                 <h3>Расчет стоимости</h3>
                 <ul class="calc-nav">
-                    <li class="current">Ангар</li>
-                    <li><a href="">Мансарда</a></li>
-                    <li><a href="">Кровля</a></li>
-                    <li><a href="">Пристройка</a></li>
+                    {% for product in products %}
+                    <li {% if forloop.first %}class="current"{% endif %}>
+                        <a data-target-product-id="{{product.id}}" class="calc-product-switcher" href="">{{product.name}}</a>
+                    </li>
+                    {% endfor %}
                 </ul>
-                <h4>1. Укажите ширину и высоту ангара</h4>
+                {% for product in products %}
+                    <h4 data-product-id="{{product.id}}"class="product-switchable {%if not forloop.first%}hidden{%endif%}">1. Укажите ширину и высоту {{product.name}}</h4>
+                {% endfor %}
             </div>
         </div>
         <div class="size-chooser calc-size-chooser">
@@ -26,23 +31,25 @@
             <form action="" class="calc-form">
                 <div><h3 class="calc-form-header">2. Введите длину ангара</h3></div>
                 <div class="calc-form-size">
-                    <span class="value">15 м</span> 
+                    <span class="value size-width">15 м</span> 
                     <span class="label">ШИРИНА</span>
                 </div>
                 <span class="multi">x</span>
                 <div class="calc-form-size">
-                    <span class="value">7.5 м</span> 
+                    <span class="value size-height">7.5 м</span> 
                     <span class="label">ВЫСОТА</span>
                 </div>
                 <span class="multi">x</span>
-                <input type="text" class="calc-form-input"> <span class="m-value">м</span>
+                <input type="text" class="calc-form-input size-length" value="25" /> <span class="m-value">м</span>
                 <div class="calc-caption dops">
                     <h4>3. Дополнительные параметры</h4>
                     <span class="dop-label">С утеплителем</span>
-                    <input type="checkbox">
+                    <input type="checkbox" class="warm-checkbox">
                 </div>
                 <div class="total">
-                    <span class="value">3 500 000</span>
+                    <span class="hidden price-value">{{price}}</span>
+                    <span class="hidden price-warm-value">{{price_warm}}</span>
+                    <span class="value total-value"></span>
                     <span class="rub">руб.</span>
                     <span class="label">ОРИЕНТИРОВОЧНАЯ СТОИМОСТЬ</span>
                     <a href="#calc-message-modal" class="calc-button fancybox">Отправить заявку</a>
@@ -52,50 +59,6 @@
     </section>
     <!-- end of main -->	
     <div id="calc-message-modal" class="modal calc-message-modal">
-        <form action="" class="calc-message-form">
-            <div class="caption">
-                <img class="calc-caption-image" src="/media/images/calc-modal-caption-image.png" alt="" class="calc-header-img">
-                <div class="calc-caption">
-                    <h3>Ангар</h3>
-                </div>
-                <div class="demensions">
-                    <div class="calc-form-size">
-                        <span class="value">15 м</span> 
-                        <span class="label">ШИРИНА</span>
-                    </div>
-                    <span class="multi">x</span>
-                    <div class="calc-form-size">
-                        <span class="value">7.5 м</span> 
-                        <span class="label">ВЫСОТА</span>
-                    </div>
-                    <span class="multi">x</span>
-                    <div class="calc-form-size">
-                        <span class="value">25 м</span> 
-                        <span class="label">ДЛИНА</span>
-                    </div>
-                </div>
-                <div class="total">
-                    <span class="value">3 500 000</span>
-                    <span class="rub">руб.</span>
-                    <span class="label">ОРИЕНТИРОВОЧНАЯ СТОИМОСТЬ</span>
-                </div>
-            </div>
-            <div class="name-n-phone">
-                <div class="name">
-                    <span class="label">Ваше имя</span>
-                    <input type="text" class="calc-form-input">
-                    <span class="hint">ФАМИЛИЯ ИМЯ ОТЧЕСТВО</span>
-                </div>
-                <div class="phone">
-                    <span class="label">Телефон</span>
-                    <span class="phone-code">+7 </span><input type="text" class="calc-form-input">
-                </div>
-            </div>
-            <div class="email">
-                <span class="label">E-mail</span>
-                <input type="text" class="calc-form-input calc-modal-input">
-                <a href="#calc-message-modal" class="calc-button fancybox">Отправить</a>
-            </div>
-        </form>
+        {% include 'calculation_form.html' %}
     </div>
 {% endblock %}

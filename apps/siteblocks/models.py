@@ -79,6 +79,7 @@ class Settings(models.Model):
     name = models.CharField( 
         verbose_name = u'Служебное имя',
         max_length = 250,
+        editable = False,
     )
     value = models.TextField(
         verbose_name = u'Значение'
@@ -86,7 +87,8 @@ class Settings(models.Model):
     type = models.CharField(
         max_length=20,
         verbose_name=u'Тип значения',
-        choices=type_choices
+        choices=type_choices,
+        editable = False,
     )
     class Meta:
         verbose_name =_(u'site_setting')
