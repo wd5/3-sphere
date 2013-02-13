@@ -1,26 +1,27 @@
 {% extends "base.html" %}
 
-{% load thumbnail %}
+{% load thumbnail siteblocks_extras %}
 
-{% if page.title %}
-    {% block title %}
-        {{ page.title }} &mdash;
-    {% endblock %}
-{% endif %}
-
+{% block title %}
+{% if meta.title|striptags > 0 %}
+        {{ meta.title }}
+{% else %}
+Контакты
+{% endif %} &mdash; 
+{% endblock %}
 {% block head %}
 <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU&coordorder=longlat" type="text/javascript"></script>
 <script type="text/javascript">
     ymaps.ready(init);
     var contactsMap;
-
     function init(){     
+        var coords = eval($('#contacts-map').data('coords'));
         contactsMap = new ymaps.Map ("contacts-map", {
-            center: [113.518971,52.026144],
+            center: coords,
             zoom: 15,
         });
         var contactsPlacemark = new ymaps.Placemark(
-                [113.519014,52.025899]
+                coords
                 );
         contactsMap.geoObjects.add(contactsPlacemark); 
         contactsMap.controls.add(
@@ -34,18 +35,16 @@
     <!-- main -->
     <section class="main contacts-main">
         <div class="contacts-header">Контакты</div>
-
         <div>
             <section class="column main-left-column">
                 <div class="contacts-address">
                 <span class="address-city">Чита</span>,<br>
-                Ленина, 25<br>
-                офис 325</div>
-                <div class="phone"><span class="phone-code">(3022)</span> 71-77-71</div>
+                {% block_static 'address' %}</div>
+                <div class="phone"><span class="phone-code">(3022)</span> {% block_static 'phone' %}</div>
             </section>
 
             <section class="column main-right-column">
-                <div id="contacts-map"></div>
+                <div id="contacts-map" data-coords="{% block_static 'coords' %}"></div>
             </section>
         </div>
     </section>

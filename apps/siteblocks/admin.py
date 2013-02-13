@@ -14,7 +14,7 @@ class SiteMenuAdmin(AdminImageMixin, MPTTModelAdmin):
     list_display_links = ('title', 'url',)
     list_editable = ('order', 'is_published',)
 
-admin.site.register(SiteMenu, SiteMenuAdmin)
+# admin.site.register(SiteMenu, SiteMenuAdmin)
 
 #--Виджеты jquery Редактора
 class SettingsAdminForm(forms.ModelForm):
@@ -38,6 +38,13 @@ class SettingsAdminForm(forms.ModelForm):
 #--Виджеты jquery Редактора
 
 class SettingsAdmin(admin.ModelAdmin):
-    list_display = ('title','name','value',)
+    list_display = ('title', 'value',)
+    readonly_fields = ('title',)
+    fields = ('title', 'value',)
     form = SettingsAdminForm
+    def has_delete_permission(self, request, obj=None):
+        return False
+    def has_add_permission(self, request, obj=None):
+        return False
+
 admin.site.register(Settings, SettingsAdmin)

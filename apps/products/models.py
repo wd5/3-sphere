@@ -264,6 +264,7 @@ class Request(models.Model):
     )
     description = models.TextField(
         verbose_name=u'описание заявки', 
+        blank = True
     )
     name = models.CharField(
         verbose_name=u'имя', 
@@ -281,7 +282,13 @@ class Request(models.Model):
     date = models.DateTimeField(
         verbose_name = u'дата',
         default = datetime.datetime.now,
+        blank = True
     )
+
+    def save(self, *args, **kwargs):
+        self.date = datetime.datetime.now()
+        super(Request, self).save()        
+
     class Meta:
         verbose_name = u'заявка'
         verbose_name_plural = u'заявки'
