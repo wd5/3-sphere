@@ -52,13 +52,11 @@
                     <span class="value total-value"></span>
                     <span class="rub">руб.</span>
                     <span class="label">ОРИЕНТИРОВОЧНАЯ СТОИМОСТЬ</span>
-                    <a href="#calc-message-modal" class="calc-button fancybox">Отправить заявку</a>
+                    <a href="/request/" class="calc-button fancybox-ajax fancybox.ajax">Отправить заявку</a>
                 </div>
             </form>
         </div>
     </section>
     <!-- end of main -->	
-    <div id="calc-message-modal" class="modal calc-message-modal">
-        {% include 'calculation_form.html' %}
-    </div>
+
 {% endblock %}

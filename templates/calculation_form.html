@@ -1,52 +1,55 @@
-<form action="/request/" method="post" class="calc-message-form">
-    {% csrf_token %}
-    <input type="" id="success-input" value="{{success}}" class="hidden">
-    <input type="" id="success-url-input" value="{{success_url}}" class="hidden">
-    {{ form.errors }}
-    <div class="caption">
-        {% for product in products %}
-        <img data-product-id="{{product.id}}" class="calc-caption-image product-switchable {%if not forloop.first%}hidden{%endif%}" src="/media/images/calc-caption-image.png" alt="" class="calc-header-img">     
-        <div data-product-id="{{product.id}}" class="calc-caption product-switchable {%if not forloop.first%}hidden{%endif%}">
-            <h3>{{ product.name }}</h3>
-            <input type="radio" data-product-id="{{product.id}}" class="hidden product-checkbox" name="product" value="{{product.id}}" {%if forloop.first%}checked="checked"{%endif%}>
-        </div>
-        {% endfor %}
-        <div class="demensions">
-            <div class="calc-form-size">
-                <span class="value size-width">15 м</span> 
-                <span class="label">ШИРИНА</span>
+<div id="calc-message-modal" class="calc-message-modal">
+    <form action="/request/" method="post" class="calc-message-form">
+        {% csrf_token %}
+        <div class="caption">
+            {% for product in products %}
+            <img data-product-id="{{product.id}}" class="calc-caption-image product-switchable {%if not forloop.first%}hidden{%endif%}" src="/media/images/calc-caption-image.png" alt="" class="calc-header-img">     
+            <div data-product-id="{{product.id}}" class="calc-caption product-switchable {%if not forloop.first%}hidden{%endif%}">
+                <h3>{{ product.name }}</h3>
+                <input type="radio" data-product-id="{{product.id}}" class="hidden product-checkbox" name="product" value="{{product.id}}" {%if forloop.first%}checked="checked"{%endif%}>
             </div>
-            <span class="multi">x</span>
-            <div class="calc-form-size">
-                <span class="value size-height">7.5 м</span> 
-                <span class="label">ВЫСОТА</span>
+            {% endfor %}
+            <div class="demensions">
+                <div class="calc-form-size">
+                    <span class="value size-width">15 м</span> 
+                    <span class="label">ШИРИНА</span>
+                </div>
+                <span class="multi">x</span>
+                <div class="calc-form-size">
+                    <span class="value size-height">7.5 м</span> 
+                    <span class="label">ВЫСОТА</span>
+                </div>
+                <span class="multi">x</span>
+                <div class="calc-form-size">
+                    <span class="value size-length">25 м</span> 
+                    <span class="label">ДЛИНА</span>
+                </div>
             </div>
-            <span class="multi">x</span>
-            <div class="calc-form-size">
-                <span class="value size-length">25 м</span> 
-                <span class="label">ДЛИНА</span>
+            <div class="total">
+                <span class="value total-value">3 500 000</span>
+                <span class="rub">руб.</span>
+                <span class="label">ОРИЕНТИРОВОЧНАЯ СТОИМОСТЬ</span>
             </div>
         </div>
-        <div class="total">
-            <span class="value total-value">3 500 000</span>
-            <span class="rub">руб.</span>
-            <span class="label">ОРИЕНТИРОВОЧНАЯ СТОИМОСТЬ</span>
+        <div class="name-n-phone">
+            <div class="name">
+                <span class="label">Ваше имя</span>
+                <input type="text" class="calc-form-input {%if form.errors.name%}input-with-errors{%endif%}" name="name">
+                <span class="errors">{{form.errors.name}}</span>
+                <span class="hint">ФАМИЛИЯ ИМЯ ОТЧЕСТВО</span>
+            </div>
+            <div class="phone">
+                <span class="label">Телефон</span>
+                <span class="phone-code">+7 </span>
+                <input type="text" class="calc-form-input {%if form.errors.phone%}input-with-errors{%endif%}" name="phone">
+                <span class="errors">{{form.errors.phone}}</span>
+            </div>
         </div>
-    </div>
-    <div class="name-n-phone">
-        <div class="name">
-            <span class="label">Ваше имя</span>
-            <input type="text" class="calc-form-input" name="name">
-            <span class="hint">ФАМИЛИЯ ИМЯ ОТЧЕСТВО</span>
+        <div class="email">
+            <span class="label">E-mail</span>
+            <input type="text" class="calc-form-input calc-modal-input {%if form.errors.email%}input-with-errors{%endif%}" name="email">
+            <input type="submit" href="/request/" class="calc-button calc-button-submit fancybox-ajax-post fancybox.ajax" value="Отправить">
+            <span class="errors">{{form.errors.email}}</span>
         </div>
-        <div class="phone">
-            <span class="label">Телефон</span>
-            <span class="phone-code">+7 </span><input type="text" class="calc-form-input" name="phone">
-        </div>
-    </div>
-    <div class="email">
-        <span class="label">E-mail</span>
-        <input type="text" class="calc-form-input calc-modal-input" name="email">
-        <input type="submit" href="" class="calc-button calc-button-submit" value="Отправить">
-    </div>
-</form>
+    </form>
+</div>

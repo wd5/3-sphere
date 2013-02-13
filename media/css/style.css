@@ -991,6 +991,8 @@ a:visited {
     color: #cebf91;
 }
 .calc-button-submit {
+    margin-right: 20px;
+    width: 174px;
     height: 33px;
     outline: none;
     border:none; 
@@ -1106,5 +1108,13 @@ a:visited {
     width: 31px;
     height: 31px;
     background: url(../images/octoberweb-logo.png)
+}
+.errors {
+    display: block;
+    color: red;
+    width: 150px;
+}
+.input-with-errors {
+    border-color: red;
 }
 /* end of footer */

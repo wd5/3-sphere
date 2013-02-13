@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import redirect
+import json 
+
+from django.shortcuts import HttpResponse
 from django.views.generic import TemplateView, DetailView, ListView, CreateView
 from apps.products.models import Product, Property, Tech, Request
 from apps.siteblocks.models import Settings
@@ -66,19 +68,7 @@ class RequestView(CreateView):
         return context
 
     def form_valid(self, form):
-        super(RequestView, self).form_valid()
-        response = render_to_response(self.template_name, 
-                                      self.get_context_data(success=1, success_url=self.success_url),
-                                      context_instance=RequestContext(self.request))
-        return HttpResponse(response)
-
-    def form_invalid(self, form):
-        super(RequestView, self).form_invalid()
-        response = render_to_response(self.template_name, 
-                                      self.get_context_data(form=form, success=0),
-                                      context_instance=RequestContext(self.request))
-        return HttpResponse(response)
-
+        return HttpResponse(json.dumps({'success':1, 'success_url':self.success_url}), content_type="application/json")
 
 request = RequestView.as_view()
 
@@ -89,4 +79,5 @@ class ContactsView(TemplateView):
         context = super(ContactsView, self).get_context_data(**kwargs)
         context['products'] = Product.objects.published()
         return context
+
 contacts = ContactsView.as_view()

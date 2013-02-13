@@ -1,6 +1,26 @@
 var SizeChooser = function(){
     var isCalcPage = $('.size-chooser').hasClass('calc-size-chooser');
 
+    ValuesForModal = function(){
+        var currentHeight = $('.calc-form .size-height').html();
+        var currentWidth = $('.calc-form .size-width').html();
+        var currentLength = $('.calc-form .size-length').prop('value');
+        var isWithWarm = $('.calc-form .warm-checkbox').prop('checked');
+        if(isWithWarm){
+            var price = parseInt($('.calc-form .price-warm-value').html())
+        }else{
+            var price = parseInt($('.calc-form .price-value').html())
+        }
+
+        var square = parseFloat(currentWidth)*parseFloat(currentLength);
+        var total = square*price;
+
+        $('.size-width').html(currentWidth);
+        $('.size-height').html(currentHeight);
+        $('.size-length').html(currentLength + ' м');
+        $('.total-value').html(total);
+    }
+
     var ChangeCalcFormValues = function(){
         var currentHeight = $('.size-chooser .height-chooser li.current .value').html();
         var currentWidth = $('.size-chooser .width-chooser li.current .value').html();
@@ -89,31 +109,29 @@ var SizeChooser = function(){
 }
 
 var CalculationForm = function(){
-    $('.calc-product-switcher').on('click', function(e){
-        e.preventDefault();
-        var targetId = $(this).attr('data-target-product-id');
-        $('.product-switchable').addClass('hidden');
-        $('.product-switchable[data-product-id="'+targetId+'"]').removeClass('hidden');
-
-        $('.calc-product-switcher').parent('li').removeClass('current');
-        $(this).parent('li').addClass('current');
-
-        $('.product-checkbox').attr('checked', false);
-        $('.product-checkbox[data-product-id="'+targetId+'"]').attr('checked', true);
+    $('.fancybox-ajax').fancybox({
+        type: 'ajax',
+        padding: 0,
+        beforeShow: ValuesForModal
     });
 
-    $('.calc-message-form').on('submit', function(e){
+    $('body').on('submit', '.calc-message-form', function(e){
         e.preventDefault();
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
             data: $(this).serialize(),
             success: function(data){
-                $('.calc-message-modal').html(data);
-            },
-            dataType: 'html'
+                if(data['success'] == 1){
+                    window.location = data['success_url']
+                } else {
+                    $.fancybox(data, {
+                        padding: 0,
+                        beforeShow: ValuesForModal
+                    });
+                }
+            }
         });
-
     });
 }
 
