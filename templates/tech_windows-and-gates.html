@@ -1,16 +1,24 @@
+{% load thumbnail %}
+
 <div class="column aside">
-    <img src="{{ item.image.url }}" alt="">
+    {% thumbnail item.image "200" crop="center" format="PNG" as image %}
+        <img src="{{ image.url }}" alt="">
+    {% endthumbnail %}
     <p>{{ item.description }}</p>
 </div>
 <ul class="column windows-and-gates-main">
     {% for property in item.techproperty_set.all %}
     <li>
-        <img class="left-img" src="{{ property.image1.url }}" alt="">
+        {% thumbnail property.image1 "200x87" crop="center" format="PNG" as image %}
+            <img class="left-img" src="{{ image.url }}" alt="">
+        {% endthumbnail %}
         <div>
             <h3>{{ property.name }}</h3>
             <p>{{ property.description }}</p>
         </div>
-        <img class="right-img" src="{{ property.image2.url }}" alt="">
+        {% thumbnail property.image2 "119x90" crop="center" format="PNG" as image %}
+            <img class="right-img" src="{{ image.url }}" alt="">
+        {% endthumbnail %}
     </li>
     {% endfor %}
 </ul>

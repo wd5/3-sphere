@@ -1,13 +1,21 @@
+{% load thumbnail %}
+
 {% for property in item.techproperty_set.all %}
 <section>
-    <img src="{{ property.image1.url }}" alt="" class="main-img">
+    {% thumbnail property.image1 "240" crop="center" format="PNG" as image %}
+        <img src="{{ image.url }}" alt="">
+    {% endthumbnail %}
     <div class="inner-text-box">
         <h3>{{ property.name }}</h3>
         <p>{{ property.description }}</p>
     </div>
     <div class="inner-image-box">
-        <img src="{{ property.image2.url }}" alt="" class="side-img">
-        <img src="{{ property.image3.url }}" alt="" class="side-img">
+        {% thumbnail property.image2 "119x90" crop="center" format="PNG" as image %}
+            <img src="{{ image.url }}" alt="">
+        {% endthumbnail %}
+        {% thumbnail property.image3 "119x90" crop="center" format="PNG" as image %}
+            <img src="{{ image.url }}" alt="">
+        {% endthumbnail %}
     </div>
 </section>
 {% endfor %}

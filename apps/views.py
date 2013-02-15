@@ -68,6 +68,7 @@ class RequestView(CreateView):
         return context
 
     def form_valid(self, form):
+        super(RequestView, self).form_valid(form)
         return HttpResponse(json.dumps({'success':1, 'success_url':self.success_url}), content_type="application/json")
 
 request = RequestView.as_view()

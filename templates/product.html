@@ -21,12 +21,16 @@
                 <h3>{{ product.name }}</h3>
             </section>
             <section class="column object-right-column">
-                <img src="{{ product.image.url }}" alt="">
+                {% thumbnail product.image "679x396" crop="center" format="PNG" as image %}
+                <img src="{{ image.url }}" alt="">
+                {% endthumbnail %}
             </section>
         </div>
         <div class="object-main-advantages">
             <section class="column object-left-column">
-                <img src="{{ product.draft.url }}" alt="">
+                {% thumbnail product.draft "240x126" crop="center" format="PNG" as image %}
+                <img src="{{ image.url }}" alt="">
+                {% endthumbnail %}
             </section>
             <section class="column object-center-column object-text">
                 {{ product.description|safe }}
@@ -60,7 +64,9 @@
                 </section>
                 <section class="column object-right-column">
                 {% for image in image_list.list %}
-                    <img src="{{ image.image.url }}" alt="">
+                    {% thumbnail image.image "119x90" crop="center" format="PNG" as image %}
+                    <img class="usecase-image" src="{{ image.url }}" alt="">
+                    {% endthumbnail %}
                 {% endfor %}
                 </section>
             </div>

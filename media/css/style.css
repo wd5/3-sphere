@@ -416,6 +416,12 @@ a:visited {
     cursor: default;
     color: black;
 }
+.assembly-slider-controls li.current a {
+    color: black;
+    text-decoration: none;
+    cursor: default;
+    border: none;
+}
 .assembly-slider-controls li:before {
     content: '';
     display: block;

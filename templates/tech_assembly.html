@@ -1,33 +1,19 @@
-<ul class="assembly-slider">
-    <li><img src="/media/images/process-4.png" alt=""></li>
+{% load thumbnail %}
+
+<ul class="assembly-slider" id="assembly-slider">
+    {% for property in item.techproperty_set.all %}
+    <li data-idx="{{ forloop.counter }}">
+        {% thumbnail property.image1 "715x405" crop="center" format="PNG" as image %}
+        <img src="{{ image.url }}" alt="">
+        {% endthumbnail %}
+    </li>
+    {% endfor %}
 </ul>
 <ul class="assembly-slider-controls">
-    <li class="odd">
-        <h3>1.</h3>
-        <p><a href="">ПОДГОТОВКА ФУНДАМЕНТА</a></p>
+    {% for property in item.techproperty_set.all %}
+    <li class="{% cycle 'odd' 'even' %} {%if forloop.first%}current{%endif%}" data-idx="{{ forloop.counter }}">
+        <h3>{{ forloop.counter }}.</h3>
+        <p><a href="">{{ property.description|safe }}</a></p>
     </li>
-    <li class="even">
-        <h3>2.</h3>
-        <p><a href="">ИЗГОТОВЛЕНИЕ ЛАМЕЛИЙ</a></p>
-    </li>
-    <li class="current odd">
-        <h3>3.</h3>
-        <p>СБОРКА <br>ЛАМЕЛИЙ</p>
-    </li>
-    <li class="even">
-        <h3>4.</h3>
-        <p><a href="">МОНТАЖ АРОЧНОЙ КОНСТРУКЦИИ</a></p>
-    </li>
-    <li class="odd">
-        <h3>5.</h3>
-        <p><a href="">МОНТАЖ <br>ТОРЦЕВЫХ СТЕН</a></p>
-    </li>
-    <li class="even">
-        <h3>6.</h3>
-        <p><a href="">МОНТАЖ <br>ОКОН И ВОРОТ</a></p>
-    </li>
-    <li class="odd">
-        <h3>7.</h3>
-        <p><a href="">ГОТОВАЯ <br>КОНСТРУКЦИЯ</a></p>
-    </li>
+    {% endfor %}
 </ul>

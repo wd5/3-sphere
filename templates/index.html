@@ -13,7 +13,11 @@
                 <ul id="index-slider">
                 	{% for item in products %}
                         <div class="slider-item-box" data-id="{{ item.id }}">
-                            <img src="{{ item.image.url }}" alt="">
+                            <a href="{{ item.alias }}">
+                                {% thumbnail item.image "679x396" crop="center" format="PNG" as image %}
+                                <img src="{{ image.url }}" alt="">
+                                {% endthumbnail %}
+                            </a>
                             <div class="slider-item-text">
                                 <h4>Арочная конструкция</h4>
                                 <a href="{{ item.alias }}">«{{ item.name }}»</a>
@@ -44,7 +48,9 @@
                     {% for image_list in images %}
                         {% for image in image_list.list %}
                             {% if forloop.first %}
-                            <img class="usecase-image" src="/media/{{ image.image }}" alt="">
+                            {% thumbnail image.image "119x90" crop="center" format="PNG" as image %}
+                            <img class="usecase-image" src="{{ image.url }}" alt="">
+                            {% endthumbnail %}
                             <div class="usecases-header">
                                 <div class="usecases-header-inner">
                                     <img class="usecase-category-img" src="/media/{{image_list.grouper.icon_for_main}}" alt="">
@@ -54,7 +60,9 @@
                                 </div>                        
                             </div>
                             {% else %}
-                            <img class="usecase-image" src="/media/{{ image.image }}" alt="">
+                            {% thumbnail image.image "119x90" crop="center" format="PNG" as image %}
+                            <img class="usecase-image" src="{{ image.url }}" alt="">
+                            {% endthumbnail %}
                             {% endif %}
                         {% endfor %}
                     {% endfor %}

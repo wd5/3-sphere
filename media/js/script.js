@@ -156,6 +156,28 @@ var IndexSlider = function(){
         });
 }
 
+var AssemblySlider = function(){
+    var slider = $('#assembly-slider').bxSlider({
+        mode: 'fade',
+        pager: false,
+        controls: false,
+        onSlideBefore: function(newIndex){swichCurrentP(newIndex.attr('data-idx'))}
+    });
+
+    var swichCurrentP = function(idx){
+        var elIdx = parseInt(idx);
+        el = $('.assembly-slider-controls li[data-idx="'+elIdx+'"]');
+        $('.assembly-slider-controls li').removeClass('current');
+        el.addClass('current');
+    }
+    $('.assembly-slider-controls li').on('click', function(e){
+        e.preventDefault();
+        var el = $(this);
+        var slideIndex = parseInt(el.attr('data-idx'))-1;
+        slider.goToSlide(slideIndex);
+    });
+}
+
 var Fancybox = function(){
     $('.fancybox').fancybox({
         padding: 0
@@ -167,4 +189,5 @@ $(function(){
     Fancybox();
     SizeChooser();
     CalculationForm();
+    AssemblySlider();
 });
